@@ -5,6 +5,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import AddFood from "../pages/AddFood/AddFood";
+import AvailableFood from "../pages/AvailableFood/AvailableFood";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
       {
         path: '/addFood',
         element: <AddFood></AddFood>
+      },
+      {
+        path: '/availableFood',
+        element: <AvailableFood></AvailableFood>,
+        loader: () => fetch('http://localhost:5000/foods')
       }
     ]
   },

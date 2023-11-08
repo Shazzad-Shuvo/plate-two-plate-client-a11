@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
         return () => {
             unsubscribe();
         }
-    }, []);
+    }, [axiosSecure, user?.email]);
 
     const authInfo = { user, loading, createUser, loginUser, googleSignIn, logOut };
     return (
