@@ -1,13 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const FoodDetails = () => {
+    const axiosSecure = useAxiosSecure();
     const { user } = useContext(AuthContext);
-    const { email } = user;
+    console.log(user);
+    const { email, displayName, photoURL } = user;
     const loadedFood = useLoaderData();
     console.log(loadedFood);
-    const { _id, photo, foodName, donorName, donorPhoto, quantity, pickupLocation, expireDate, note, donorEmail } = loadedFood;
+    const { _id, photo, foodName, donorName, donorPhoto, quantity, pickupLocation, expireDate, note, donorEmail, status } = loadedFood;
 
     const [dateValue, setDateValue] = useState('');
 
@@ -24,11 +28,47 @@ const FoodDetails = () => {
         setDateValue(formattedDate);
     };
 
+    const handleRequestFood = (e) => {
+        e.preventDefault();
+        const donation = e.target.donation.value;
+        const note = e.target.note.value;
+
+        const requestedFood = {
+            requesterEmail: email,
+            requesterName: displayName,
+            requesterPhoto: photoURL,
+            photo,
+            foodName,
+            donorName,
+            donorPhoto,
+            quantity,
+            pickupLocation,
+            expireDate,
+            note,
+            donorEmail,
+            donation,
+            status
+        };
+
+        axiosSecure.post('/foodRequests', requestedFood)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Food requested successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            })
+    }
+
 
 
     return (
         <div className="my-20">
-            <div className="card bg-base-100 shadow-lg">
+            <div className="card bg-base-100 shadow-lg mx-5">
                 <figure><img src={photo} alt="" /></figure>
                 <div className="card-body bg-yellow-100/60">
                     <h2 className="card-title">{foodName}</h2>
@@ -47,15 +87,14 @@ const FoodDetails = () => {
                     <p><span className="font-medium">Expire:</span> {expireDate}</p>
                     <p><span className="font-medium">Note:</span> {note}</p>
                     <div className="card-actions mt-4">
-                        <button className="btn btn-primary w-full">Request</button>
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
-                        <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>open modal</button>
-                        <dialog id="my_modal_1" className="modal">
+                        <button className="btn btn-primary w-full" onClick={() => document.getElementById('my_modal_1').showModal()}>Request</button>
+                        <dialog id="my_modal_1" className="modal -z-10">
                             <div className="modal-box max-w-2xl">
-                                <h3 className="font-bold text-lg">Hello!</h3>
+                                <h3 className="font-bold text-lg text-center">Request for food</h3>
 
                                 <div className="">
-                                    <form method="dialog">
+                                    <form onSubmit={handleRequestFood} method="dialog">
                                         {/* food section */}
                                         <div className="mb-10">
                                             {/* food name & food id */}
