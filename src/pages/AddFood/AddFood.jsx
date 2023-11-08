@@ -29,7 +29,7 @@ const AddFood = () => {
             note,
             photo,
             donorName: displayName,
-            email,
+            donorEmail: email,
             donorPhoto: photoURL
         };
 

@@ -6,9 +6,9 @@ const FoodCard = ({ food }) => {
     console.log(_id);
     return (
         <div>
-            <div className="card bg-cyan-100/60 shadow-lg">
+            <div className="card bg-base-100 shadow-lg">
                 <figure><img src={photo} alt="" /></figure>
-                <div className="card-body">
+                <div className="card-body bg-cyan-100/60">
                     <h2 className="card-title">{foodName}</h2>
                     <div className="flex items-center mt-2 border-b-2 pb-2 font-medium">
                         <img className='w-14 h-14 object-cover rounded-full'

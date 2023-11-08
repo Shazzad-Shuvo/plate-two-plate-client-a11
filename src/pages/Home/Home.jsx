@@ -1,4 +1,4 @@
-import FoodCard from "../FoodCard/FoodCard";
+
 import Slider from "./Slider";
 
 const Home = () => {
