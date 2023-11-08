@@ -1,11 +1,25 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                console.log('logged out successfully');
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    };
 
     const navLinks = <>
         <li className="mr-3"><Link to='/' className="bg-red-400 text-white">Home</Link></li>
         <li className="mr-3"><Link to='/' className="bg-red-400 text-white">Available Food</Link></li>
-        <li className="mr-3"><Link to='/' className="bg-red-400 text-white">Add Food</Link></li>
+        <li className="mr-3"><Link to='/addFood' className="bg-red-400 text-white">Add Food</Link></li>
         <li className="mr-3"><Link to='/' className="bg-red-400 text-white">Manage My Food</Link></li>
         <li><Link to='/' className="bg-red-400 text-white">My Food Request</Link></li>
     </>
@@ -29,10 +43,24 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {/* <a className="btn">Register/Login</a> */}
-                <Link to='/register'>
-                    <button className="btn">Register/Login</button>
-                </Link>
+                {
+                    user ?
+                        <>
+                            <div className="flex flex-col md:flex-row items-center">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar mr-2">
+                                    <div className="w-8 md:w-10 rounded-full">
+                                        <img src={user?.photoURL} />
+                                    </div>
+                                </label>
+                                <p className="text-sm md:text-base mr-4 dark:text-slate-200">{user.displayName}</p>
+                            </div>
+                            <button onClick={handleLogOut} className="btn bg-emerald-400 hover:bg-emerald-500 ">Log Out</button>
+                        </> :
+                        <Link to='/login'>
+                            <button className="btn bg-emerald-400 hover:bg-emerald-500 ">Register/Login</button>
+                        </Link>
+                }
+
             </div>
 
         </div>
