@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
-const FoodCard = ({ food }) => {
-    console.log(food);
-    const { _id, photo, foodName, donorName, donorPhoto, quantity, pickupLocation, expireDate, note } = food;
-    console.log(_id);
+const FoodDetails = () => {
+    const loadedFood = useLoaderData();
+    console.log(loadedFood);
+    const { photo, foodName, donorName, donorPhoto, quantity, pickupLocation, expireDate, note } = loadedFood;
     return (
-        <div>
-            <div className="card bg-cyan-100/60 shadow-lg">
+        <div className="my-20">
+            <div className="card bg-base-100 shadow-lg">
                 <figure><img src={photo} alt="" /></figure>
-                <div className="card-body">
+                <div className="card-body bg-yellow-100/60">
                     <h2 className="card-title">{foodName}</h2>
-                    <div className="flex items-center mt-2 border-b-2 pb-2 font-medium">
+                    <div className="flex items-center mt-2 border-b-2 font-medium">
                         <img className='w-14 h-14 object-cover rounded-full'
                             alt='User avatar'
                             src={donorPhoto} />
@@ -24,15 +24,13 @@ const FoodCard = ({ food }) => {
                     <p><span className="font-medium">Pickup Location:</span> {pickupLocation}</p>
                     <p><span className="font-medium">Expire:</span> {expireDate}</p>
                     <p><span className="font-medium">Note:</span> {note}</p>
-                    <Link to={`/details/${_id}`}>
-                        <div className="card-actions justify-end mt-4">
-                            <button className="btn btn-primary">View Details</button>
-                        </div>
-                    </Link>
+                    <div className="card-actions justify-end mt-4">
+                        <button className="btn btn-primary w-full">Request</button>
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
-export default FoodCard;
+export default FoodDetails;
