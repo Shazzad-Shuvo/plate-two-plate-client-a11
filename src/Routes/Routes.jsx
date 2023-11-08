@@ -6,6 +6,7 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import AddFood from "../pages/AddFood/AddFood";
 import AvailableFood from "../pages/AvailableFood/AvailableFood";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/addFood',
-        element: <AddFood></AddFood>
+        element: <PrivateRoute><AddFood></AddFood></PrivateRoute>
       },
       {
         path: '/availableFood',

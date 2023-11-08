@@ -35,7 +35,7 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">Plate2Plate</a>
+                <img className="w-40" src={'https://i.ibb.co/DgLTVGf/rsz-1plate-2-plate-removebg-preview.png'} alt="" />
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
