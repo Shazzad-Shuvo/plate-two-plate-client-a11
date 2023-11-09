@@ -1,5 +1,5 @@
 
-const RequestRow = ({ request }) => {
+const RequestRow = ({ request, handleDeleteRequest }) => {
     const { _id, donorName, pickupLocation, expireDate, requestDate, donation, status } = request;
     return (
         <tr>
@@ -7,12 +7,6 @@ const RequestRow = ({ request }) => {
                 {donorName}
             </th>
             <td>
-                {/* <div className="avatar">
-                    <div className="rounded w-24 h-24">
-                        {img && <img src={img} alt="Avatar Tailwind CSS Component" />}
-                    </div>
-                </div> */}
-
                 {pickupLocation}
             </td>
             <td>{expireDate}</td>
@@ -31,7 +25,7 @@ const RequestRow = ({ request }) => {
                 } */}
                 {
                     status === 'Available'
-                        ? <button className="btn btn-sm" >Cancel</button>
+                        ? <button className="btn btn-sm" onClick={() => handleDeleteRequest(_id)}>Cancel</button>
                         : ''
                 }
             </th>

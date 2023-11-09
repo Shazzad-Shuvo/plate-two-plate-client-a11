@@ -19,7 +19,36 @@ const FoodRequest = () => {
     }, [axiosSecure, url])
 
 
-    
+    const handleDeleteRequest = (_id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/foodRequests/${_id}`)
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Request has been deleted.',
+                                'success'
+                            )
+
+                            // remove the user from UI
+                            const remainingRequests = requests.filter(req => req._id !== _id);
+                            setRequests(remainingRequests);
+                        }
+                    })
+            }
+        })
+
+    }
 
 
     return (
@@ -52,7 +81,7 @@ const FoodRequest = () => {
                             requests.map(request => <RequestRow
                                 key={request._id}
                                 request={request}
-                                
+                                handleDeleteRequest={handleDeleteRequest}
                             ></RequestRow>)
                         }
                     </tbody>
