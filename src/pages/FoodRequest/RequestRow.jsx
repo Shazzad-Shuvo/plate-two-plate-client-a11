@@ -1,11 +1,12 @@
 
 const RequestRow = ({ request, handleDeleteRequest }) => {
-    const { _id, donorName, pickupLocation, expireDate, requestDate, donation, status } = request;
+    const { _id,foodName , donorName, pickupLocation, expireDate, requestDate, donation, status } = request;
     return (
         <tr>
             <th>
-                {donorName}
+                {foodName}
             </th>
+            <td>{donorName}</td>
             <td>
                 {pickupLocation}
             </td>

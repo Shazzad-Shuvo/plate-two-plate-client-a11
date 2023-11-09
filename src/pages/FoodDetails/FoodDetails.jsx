@@ -30,11 +30,13 @@ const FoodDetails = () => {
 
     const handleRequestFood = (e) => {
         e.preventDefault();
+        const id = e.target.id.value;
         const donation = e.target.donation.value;
         const note = e.target.note.value;
         const requestDate = e.target.reqDate.value;
 
         const requestedFood = {
+            requestedFoodId: id,
             requesterEmail: email,
             requesterName: displayName,
             requesterPhoto: photoURL,

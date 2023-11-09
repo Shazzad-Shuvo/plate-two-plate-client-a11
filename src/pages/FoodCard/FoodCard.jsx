@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
 const FoodCard = ({ food }) => {
-    console.log(food);
+    // console.log(food);
     const { _id, photo, foodName, donorName, donorPhoto, quantity, pickupLocation, expireDate, note } = food;
-    console.log(_id);
+    // console.log(_id);
     return (
         <div>
             <div className="card bg-base-100 shadow-lg">

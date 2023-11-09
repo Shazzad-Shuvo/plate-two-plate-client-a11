@@ -59,6 +59,7 @@ const FoodRequest = () => {
                     {/* head */}
                     <thead className="bg-yellow-100">
                         <tr>
+                            <th>Food</th>
                             <th>Donor</th>
                             <th>Pickup</th>
                             <th>Exp. Date</th>

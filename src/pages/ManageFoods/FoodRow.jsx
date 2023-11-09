@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const FoodRow = ({ food, handleDeleteFood }) => {
     const { _id, photo, foodName, expireDate } = food;
@@ -15,17 +16,22 @@ const FoodRow = ({ food, handleDeleteFood }) => {
                 {foodName}
             </td>
             <td>{expireDate}</td>
-            <td><button className="btn btn-sm" >Update</button></td>
+            <td>
+                <Link to={`/updateFood/${_id}`}>
+                    <button className="btn btn-sm" >Update</button>
+                </Link>
+            </td>
             <td>
                 <button className="btn btn-sm"
                     onClick={() => handleDeleteFood(_id)}
                 >Delete</button>
             </td>
-            <td><button className="btn btn-sm" >Manage</button>
+            <td>
+                <Link to={`/manage/${_id}`}>
+                    <button className="btn btn-sm" >Manage</button>
+                </Link>
             </td>
-            <th>
 
-            </th>
         </tr>
     );
 };
