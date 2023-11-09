@@ -1,25 +1,26 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import RequestRow from "./RequestRow";
+import FoodRow from "./FoodRow";
 import Swal from "sweetalert2";
 
-const FoodRequest = () => {
+
+const ManageFoods = () => {
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
-    const [requests, setRequests] = useState([]);
-    console.log(requests);
+    const [myFoods, setMyFoods] = useState([]);
+    console.log(myFoods);
 
 
-    const url = `/foodRequests?email=${user?.email}`
+    const url = `/donorFoods?email=${user?.email}`;
 
     useEffect(() => {
         axiosSecure.get(url)
-            .then(res => setRequests(res.data))
+            .then(res => setMyFoods(res.data))
     }, [axiosSecure, url])
 
 
-    const handleDeleteRequest = (_id) => {
+    const handleDeleteFood = (_id) => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -30,19 +31,19 @@ const FoodRequest = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/foodRequests/${_id}`)
+                axiosSecure.delete(`/donorFoods/${_id}`)
                     .then(res => {
                         console.log(res.data);
                         if (res.data.deletedCount > 0) {
                             Swal.fire(
                                 'Deleted!',
-                                'Request has been deleted.',
+                                'Food has been deleted.',
                                 'success'
                             )
 
                             // remove the user from UI
-                            const remainingRequests = requests.filter(req => req._id !== _id);
-                            setRequests(remainingRequests);
+                            const remainingFoods = myFoods.filter(food => food._id !== _id);
+                            setMyFoods(remainingFoods);
                         }
                     })
             }
@@ -52,29 +53,28 @@ const FoodRequest = () => {
 
 
     return (
-        <div className="my-20">
-            <h2 className="text-5xl text-center my-5">My Requests</h2>
+        <div>
+            <h2 className="text-5xl text-center my-5">My Added Foods</h2>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}
                     <thead className="bg-yellow-100">
                         <tr>
-                            <th>Donor</th>
-                            <th>Pickup</th>
+                            <th>Image</th>
+                            <th>Food Name</th>
                             <th>Exp. Date</th>
-                            <th>Req. Date</th>
-                            <th>Donation</th>
-                            <th>Status</th>
+                            <th></th>
+                            <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            requests.map(request => <RequestRow
-                                key={request._id}
-                                request={request}
-                                handleDeleteRequest={handleDeleteRequest}
-                            ></RequestRow>)
+                            myFoods.map(food => <FoodRow
+                                key={food._id}
+                                food={food}
+                                handleDeleteFood={handleDeleteFood}
+                            ></FoodRow>)
                         }
                     </tbody>
 
@@ -84,4 +84,4 @@ const FoodRequest = () => {
     );
 };
 
-export default FoodRequest;
+export default ManageFoods;

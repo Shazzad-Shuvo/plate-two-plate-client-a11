@@ -19,10 +19,6 @@ const RequestRow = ({ request, handleDeleteRequest }) => {
                 }
             </td>
             <th>
-                {/* {
-                    status === 'confirm' ? <span className="font-bold text-primary">Confirmed</span> :
-                        <button onClick={() => handleBookingConfirm(_id)} className="btn btn-ghost btn-xs">Please Confirm</button>
-                } */}
                 {
                     status === 'Available'
                         ? <button className="btn btn-sm" onClick={() => handleDeleteRequest(_id)}>Cancel</button>
