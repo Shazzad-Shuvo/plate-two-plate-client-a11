@@ -32,6 +32,7 @@ const FoodDetails = () => {
         e.preventDefault();
         const donation = e.target.donation.value;
         const note = e.target.note.value;
+        const requestDate = e.target.reqDate.value;
 
         const requestedFood = {
             requesterEmail: email,
@@ -47,6 +48,7 @@ const FoodDetails = () => {
             note,
             donorEmail,
             donation,
+            requestDate,
             status
         };
 
@@ -172,7 +174,7 @@ const FoodDetails = () => {
                                                         <span className="label-text">Donor Name</span>
                                                     </label>
                                                     <label className="">
-                                                        <input type="text" name="photo" placeholder="Food Photo URL" className="input input-bordered w-full"
+                                                        <input type="text" name="" placeholder="Food Photo URL" className="input input-bordered w-full"
                                                             defaultValue={donorName}
                                                             disabled />
                                                     </label>
@@ -182,7 +184,7 @@ const FoodDetails = () => {
                                                         <span className="label-text">Donor Email</span>
                                                     </label>
                                                     <label className="">
-                                                        <input type="text" name="location" className="input input-bordered w-full" defaultValue={donorEmail}
+                                                        <input type="text" name="" className="input input-bordered w-full" defaultValue={donorEmail}
                                                             disabled />
                                                     </label>
                                                 </div>
@@ -202,7 +204,7 @@ const FoodDetails = () => {
                                                         <span className="label-text">Request Date</span>
                                                     </label>
                                                     <label className="">
-                                                        <input type="date" name="location" className="input input-bordered w-full" defaultValue={dateValue}
+                                                        <input type="date" name="reqDate" className="input input-bordered w-full" defaultValue={dateValue}
                                                             disabled />
                                                     </label>
                                                 </div>
@@ -220,7 +222,8 @@ const FoodDetails = () => {
                                             </div>
                                         </div>
 
-                                        <input type="submit" value="Request Food" className="btn  bg-emerald-400 btn-block" />
+                                        {/* <input type="submit" value="Request Food" className="btn bg-emerald-400 btn-block" /> */}
+                                        <button className="btn bg-emerald-400 btn-block" onClick={() => document.getElementById('my_modal_1').close()}>Request Food</button>
                                     </form>
                                 </div>
                             </div>
