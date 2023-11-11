@@ -3,6 +3,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import FoodRow from "./FoodRow";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageFoods = () => {
@@ -53,7 +54,10 @@ const ManageFoods = () => {
 
 
     return (
-        <div>
+        <div className="my-20">
+            <Helmet>
+                <title>Plate-2-Plate | Manage My Food</title>
+            </Helmet>
             <h2 className="text-5xl text-center my-5">My Added Foods</h2>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">

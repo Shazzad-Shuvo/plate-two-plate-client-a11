@@ -3,6 +3,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     const [registerError, setRegisterError] = useState('');
@@ -65,6 +66,9 @@ const Register = () => {
     }
     return (
         <div className="min-h-screen mt-20 pb-10 lg:py-10 mx-5 ">
+            <Helmet>
+                <title>Plate-2-Plate | Register</title>
+            </Helmet>
             <div className="flex-col">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold">Register now!</h1>

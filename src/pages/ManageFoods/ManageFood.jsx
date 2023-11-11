@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ManageFood = () => {
     const loadedFood = useLoaderData();
@@ -21,7 +22,7 @@ const ManageFood = () => {
                 console.log(res.data);
                 setRequestedFood(res.data);
             })
-    }, [])
+    }, [axiosSecure, url])
 
 
 
@@ -43,6 +44,9 @@ const ManageFood = () => {
 
     return (
         <div className="my-20 text-center flex justify-center ">
+            <Helmet>
+                <title>Plate-2-Plate | Confirm Delivery</title>
+            </Helmet>
             {
                 requestedFood ?
                     <div className="card  bg-base-100 shadow-xl">
@@ -61,7 +65,7 @@ const ManageFood = () => {
                             <div className="card-actions justify-end mt-6">
                                 <button
                                     onClick={() => handleConfirmDelivery(_id)}
-                                    className="btn btn-primary w-full">Deliver</button>
+                                    className="btn bg-emerald-400 hover:bg-emerald-500 w-full">Deliver</button>
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,7 @@ import Swal from 'sweetalert2'
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const [loginError, setLoginError] = useState('');
@@ -51,6 +52,9 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Plate-2-Plate | Login</title>
+            </Helmet>
             <div className=" min-h-screen mt-20 pb-10 lg:py-10 mx-5">
                 <div className=" flex-col">
                     <div className="text-center">

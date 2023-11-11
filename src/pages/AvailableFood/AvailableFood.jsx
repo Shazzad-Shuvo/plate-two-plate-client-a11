@@ -2,6 +2,7 @@
 import FoodCard from "../FoodCard/FoodCard";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const AvailableFood = () => {
     // const foods = useLoaderData();
@@ -36,10 +37,13 @@ const AvailableFood = () => {
 
     return (
         <div className="mx-5 my-20 bg-slate-100 p-10">
+            <Helmet>
+                <title>Plate-2-Plate | Available Food</title>
+            </Helmet>
             <div className="text-left max-w-sm mx-auto mb-20">
                 <form onSubmit={handleSearch}>
                     <input
-                        className="rounded-l-lg p-3 text-black"
+                        className="rounded-l-lg p-3 text-black border-2 border-gray-300"
                         type="text"
                         name="name"
                         onChange={handleNameChange}
@@ -47,7 +51,7 @@ const AvailableFood = () => {
                     <input
                         type="submit"
                         value="Search"
-                        className="rounded-r-lg py-3 px-5 font-semibold bg-[#FF444A]" />
+                        className="rounded-r-lg py-3 px-5 font-semibold bg-emerald-400 hover:bg-emerald-500" />
                 </form>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

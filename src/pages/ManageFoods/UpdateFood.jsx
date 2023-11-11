@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const UpdateFood = () => {
     const axiosSecure = useAxiosSecure();
@@ -44,6 +45,9 @@ const UpdateFood = () => {
 
     return (
         <div className="bg-[#F4F3F0] p-6 md:p-24">
+            <Helmet>
+                <title>Plate-2-Plate | Update Food</title>
+            </Helmet>
             <div className="border-b border-gray-900/10">
                 <h2 className="text-4xl font-extrabold mb-8 text-center ">Update Food</h2>
                 <h4 className="text-2xl font-semibold mb-3">Food Info</h4>

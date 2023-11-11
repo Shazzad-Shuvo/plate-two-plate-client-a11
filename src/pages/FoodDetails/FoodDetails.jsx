@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const FoodDetails = () => {
     const axiosSecure = useAxiosSecure();
@@ -72,6 +73,9 @@ const FoodDetails = () => {
 
     return (
         <div className="my-20">
+            <Helmet>
+                <title>Plate-2-Plate | Food Details</title>
+            </Helmet>
             <div className="card bg-base-100 shadow-lg mx-5">
                 <figure><img src={photo} alt="" /></figure>
                 <div className="card-body bg-yellow-100/60">
@@ -92,7 +96,7 @@ const FoodDetails = () => {
                     <p><span className="font-medium">Note:</span> {note}</p>
                     <div className="card-actions mt-4">
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
-                        <button className="btn btn-primary w-full" onClick={() => document.getElementById('my_modal_1').showModal()}>Request</button>
+                        <button className="btn bg-emerald-400 hover:bg-emerald-500 w-full" onClick={() => document.getElementById('my_modal_1').showModal()}>Request</button>
                         <dialog id="my_modal_1" className="modal -z-10">
                             <div className="modal-box max-w-2xl">
                                 <h3 className="font-bold text-lg text-center">Request for food</h3>

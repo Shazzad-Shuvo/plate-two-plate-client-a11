@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AddFood = () => {
     const { user } = useContext(AuthContext);
@@ -14,7 +15,7 @@ const AddFood = () => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
-        const quantity = form.quantity.value;
+        const quantity = parseInt(form.quantity.value);
         const date = form.date.value;
         const location = form.location.value;
         const note = form.note.value;
@@ -53,6 +54,9 @@ const AddFood = () => {
 
     return (
         <div className="bg-[#F4F3F0] p-6 md:p-24">
+            <Helmet>
+                <title>Plate-2-Plate | Add Food</title>
+            </Helmet>
             <div className="border-b border-gray-900/10">
                 <h2 className="text-4xl font-extrabold mb-8 text-center ">Add Food</h2>
                 <h4 className="text-2xl font-semibold mb-3">Food Info</h4>

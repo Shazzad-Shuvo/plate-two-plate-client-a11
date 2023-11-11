@@ -3,6 +3,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import RequestRow from "./RequestRow";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const FoodRequest = () => {
     const { user } = useContext(AuthContext);
@@ -53,6 +54,9 @@ const FoodRequest = () => {
 
     return (
         <div className="my-20">
+            <Helmet>
+                <title>Plate-2-Plate | Food Requests</title>
+            </Helmet>
             <h2 className="text-5xl text-center my-5">My Requests</h2>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">

@@ -5,7 +5,7 @@ const FoodCard = ({ food }) => {
     const { _id, photo, foodName, donorName, donorPhoto, quantity, pickupLocation, expireDate, note } = food;
     // console.log(_id);
     return (
-        <div>
+        <div className="mx-5">
             <div className="card bg-base-100 shadow-lg">
                 <figure><img src={photo} alt="" /></figure>
                 <div className="card-body bg-cyan-100/60">
@@ -26,7 +26,7 @@ const FoodCard = ({ food }) => {
                     <p><span className="font-medium">Note:</span> {note}</p>
                     <Link to={`/details/${_id}`}>
                         <div className="card-actions justify-end mt-4">
-                            <button className="btn btn-primary">View Details</button>
+                            <button className="btn bg-emerald-400 hover:bg-emerald-500">View Details</button>
                         </div>
                     </Link>
                 </div>
