@@ -1,8 +1,16 @@
-# React + Vite
+Features of my project(Plate-2-Plate):
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website Live Link:
 
-Currently, two official plugins are available:
+- [Plate-2-Plate](https://plate-two-plate.web.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Project Features:
+
+- Homepage will show a slider of images, our feature foods according to highest number of consumers for a food.
+- Clicking on the show all button will take user to the 'Available Food' page.
+- On the 'Available Food' page user will be able to search for food by putting in exact name of the food. Every food card has a 'View Details' button that takes user to the food details card.
+- On the food details card user will be able to request for food by clicking on the request button. Request button will open a modal that shows food and user info and takes donation and additional note.
+- User will be able to add new food from the 'Add Food page'.
+- User will be able to manage his/her added food (edit, delete, manage confirm delivery) from 'Manage my Food' page.
+- User will be able to see his/her requested food status and remove food if not delivered yet from 'My food request' page. 
+
