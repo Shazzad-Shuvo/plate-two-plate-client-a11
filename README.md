@@ -4,6 +4,16 @@ Website Live Link:
 
 - [Plate-2-Plate](https://plate-two-plate.web.app)
 
+### Tools & Technologies Used:
+- Tailwind
+- React
+- React router
+- MongoDb
+- Node.js
+- Express.js
+- Firebase
+- Json Web Token
+
 Project Features:
 
 - Homepage will show a slider of images, our feature foods according to highest number of consumers for a food.
